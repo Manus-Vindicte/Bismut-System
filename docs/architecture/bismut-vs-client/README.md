@@ -1,10 +1,10 @@
 # Bismut VS Client · Architektur- und Q&A-Dokumente
 
-**Aktueller Git-Stand (2026-11-18):** [Roadmap V1.8](BISMUT_VS_CLIENT_ROADMAP_V1_8.md)
+**Aktueller Git-Stand (2026-11-19):** [Roadmap V1.9](BISMUT_VS_CLIENT_ROADMAP_V1_9.md)
 
 ## Entscheidungen und laufende Evaluierungen
 
-- **Q1–Q8:** Architekturentscheidungen RATIFIED (zusammengefasst in Roadmap V1.8).
+- **Q1–Q8:** Architekturentscheidungen RATIFIED (zusammengefasst in Roadmap V1.9).
 - **Q9:** vier Bootstrap-Lanes zur Evaluation freigegeben, Architektur OPEN.
 - **Q10:** vier Threading-Lanes zur Evaluation freigegeben, Architektur OPEN.
 - **Q11:** vier Memory-Ownership-Lanes zur Evaluation freigegeben (Rust Arenas D als Hypothese), Architektur OPEN.
@@ -14,7 +14,8 @@
 - **Q15:** [Dual .NET-/Rust-SDK + Bismut Loader, DECIDED](ADR_BISMUT_Q15_DUAL_SDK_BISMUT_LOADER_2026-11-18.md). Der VS-Mod-Loader bleibt für bestehende VS-Mods verantwortlich.
 
 - **Q16:** [Rust Recovery Supervisor + externer Watchdog, B+D DECIDED](ADR_BISMUT_Q16_RUST_RECOVERY_SUPERVISOR_EXTERNAL_WATCHDOG_2026-11-18.md).
-- **Q17:** Performance-Budgets und Telemetrie, OPEN.
+- **Q17:** [Stage Frame-Time Budgets + Benchmark Worlds, B+Suite DECIDED](ADR_BISMUT_Q17_FRAME_BUDGETS_BENCHMARK_WORLDS_2026-11-19.md). [Benchmark Suite V1 Spec](BISMUT_VS_CLIENT_BENCHMARK_SUITE_V1_SPEC_2026-11-19.md). Konkrete Performance-PASS-Schwellen bleiben NEEDS_BASELINE.
+- **Q18:** Native Client Shell / In-Game-Funktionen, OPEN.
 
 ## Reconciliation-Grenze
 
