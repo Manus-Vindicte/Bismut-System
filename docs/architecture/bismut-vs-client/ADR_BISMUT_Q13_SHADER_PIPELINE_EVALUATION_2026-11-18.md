@@ -15,7 +15,7 @@ Q6-C bleibt bindend: Ziel ist **Rust-native D3D12**, nicht wgpu. Ein Device-/PSO
 
 | Lane | Technischer Umfang | Hauptnachweise |
 |---|---|---|
-| **A** | Direkte HLSL/DXC-Komprimierung zu DXIL, Root Signature, native DX12 PSO-/Pipeline-Library | Cold-/Warm-Compile, PSO-Lifecycle, Debugdiagnose, reproduzierbare Builds |
+| **A** | Direkte HLSL/DXC-Kompilierung zu DXIL, Root Signature, native DX12 PSO-/Pipeline-Library | Cold-/Warm-Compile, PSO-Lifecycle, Debugdiagnose, reproduzierbare Builds |
 | **B** | Rust Shader Pipeline Manager über HLSL/DXC mit Reflection, Content-/Include-Hash, PSO-Cache, atomarem Hot Reload | Cache-Korrektheit, Varianten, Dependency-Invalidierung, Rollback |
 | **C** | Begrenzter Shader-IR/-Graph-Spike mit HLSL-Output; kein alternativer GPU-Device-Owner | Reproduzierbarkeit, Binding-Layout und Rendering-Parität, Komplexität |
 | **D** | VS-/Mod-Shader-Compatibility-Adapter, Ausgabe auf denselben Rust-DX12-PSO-/Resource-Pfad | Shader-/Render-State-/Depth-/Blend-/Shadow-Semantik; unbekannte Features UNKNOWN |
