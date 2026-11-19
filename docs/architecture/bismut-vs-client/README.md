@@ -28,7 +28,7 @@
 
 ## Laufende Impact-Studien
 
-- **VS 1.23.0-pre.1:** [PT-VS-1.23-PRE1-ENGINE-CLIENT-IMPACT-STUDY, PRELIMINARY / SOURCE_PENDING](PT_VS_1_23_0_PRE1_ENGINE_CLIENT_IMPACT_STUDY_2026-11-19.md). Zwei getrennte Engine-/Client-Study-Threads, Pre-Release nur isoliert im Lab, keine Stable-/World-/Mod-Migration. Die exakte offizielle Pre.1-Release-Seite war bei Erstellung nicht abrufbar; sie ist vor abschließender Quellenauswertung zwingend zu lesen.
+- **VS 1.23.0-pre.1:** [ursprünglicher Studienauftrag](PT_VS_1_23_0_PRE1_ENGINE_CLIENT_IMPACT_STUDY_2026-11-19.md), bei dessen Erstellung `SOURCE_PENDING` war. Nach neuem lokalen Owner-/Agenten-Report **STUDY RESEARCH_DONE / IMPACT PARTIAL / TEST_PASS BLOCKED**, Originalrelease und API Changes laut Report vollständig gelesen und QA akzeptiert (lokaler Report-Commit `c12c0df3`, **nicht hier verfügbar**). **[Folgeauftrag / fünf OD-Proposals / getrennte Engine- und Client-Threads](PT_BISMUT_VS123_POST_STUDY_OWNER_GATES_AND_TWO_THREADS_2026-11-19.md)**. Entscheidungen **nicht ratifiziert**, keine öffentliche Pre1-Migration.
 
 ## Reconciliation-Grenze
 
