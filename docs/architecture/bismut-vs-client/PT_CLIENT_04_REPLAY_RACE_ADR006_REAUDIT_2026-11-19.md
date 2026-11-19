@@ -2,7 +2,7 @@
 
 - Datum: 2026-11-19
 - Owner: Bismut Client Thread + **unabhängige, dynamisch testende QA**
-- Status: **HANDOFF / OWNER_GATE_REQUIRED / RUNTIME_INTEGRATION_BLOCKED**
+- Status: **HANDOFF / SCOPE_GO_FOR_D6_TESTS_AND_RACE_FIX / ADR006_OWNER_GATE_CLOSED**
 - Code-Repo: `Manus-Vindicte/Bismut-Launcher-Dev`
 - Remote zum Reconciliieren: `feat/modpack-scope-binding` @ `967c28560aaa041806dfddc0341e38e2d71ee18c`; separater Audit-Branch `lab/pt-bl-lab-04-vs-auth-20261114` @ `fd8be85c0d6a90502c68aeca91efa4bc73b76d52`.
 - Nach Live-Code-Lesung: `electron/modpack/gameVersionSemantics.cjs` hat bereits `unverified_lab_only`-Klassifizierung, `frontend/src/services/MockReadModelProvider.jsx` enthält bereits `pending_confirmation`, `intentId`, `worldId`, `expiresAt` und `confirmPendingWorldStart()`. **Nicht PT-CLIENT-03 nochmals bauen.**
@@ -16,7 +16,7 @@ Prüfe und schließe die tatsächlichen **Verhaltenslücken** des bereits gepush
 
 1. **Reconciliation & Scope:** lokaler Branch, Remote-HEAD, Dirty State, D6-Fixes und Produkt-Callsites von `evaluateGameVersion` prüfen. Nur fehlende Verhaltens- und Integrationsgates anfassen. ADR-006 D-A..D-D bleibt `PROPOSED`, bis Owner es ausdrücklich genehmigt.
 2. **Dynamische Fake-Host-Suite:** T1 Reconnect ohne Autostart; T2 Start nach Bestätigung exakt 1× mit gebundener World-ID; T3 zwei offline Intents, nur neuester; T4 blocked/expired no infinite retry; T5 Mock↔Real-Provider-Wechsel ohne Cross-Instance-Start; T6 `1.23.0-pre.1 >=1.22.0` ⇒ `unverified_lab_only`. Teste auch zwei gleichzeitige Confirm-Calls, bestätigter Start während neuerem Pending und verspätete Fehler-/Success-Callbacks.
-3. **Konkrete Async-Race prüfen:** `maybeReplayPendingWorldStart()` setzt `this.pendingWorldStart=null` vor `await this.real.dispatch(...)`, stellt bei Block/Exception aber alte Pending-Daten wieder her. Ein späterer neuer Intent darf **nie** durch einen älteren Request überschrieben werden. Fix mit Intent-ID/Generation/CAS-Guard und single-flight-/idempotency-Regel **nur nach Umfangs-/Owner-Gate**; Tests vor Fix rot, danach grün dokumentieren. Keine silent retries.
+3. **Konkrete Async-Race prüfen:** `maybeReplayPendingWorldStart()` setzt `this.pendingWorldStart=null` vor `await this.real.dispatch(...)`, stellt bei Block/Exception aber alte Pending-Daten wieder her. Ein späterer neuer Intent darf **nie** durch einen älteren Request überschrieben werden. Fix mit Intent-ID/Generation/CAS-Guard und single-flight-/idempotency-Regel **im hier freigegebenen engen D6-Sicherheits-Scope**; Änderungen der produktiven Startautorität brauchen weiterhin ADR-006/Owner-GO; Tests vor Fix rot, danach grün dokumentieren. Keine silent retries.
 4. **Version Gate end-to-end:** `preReleaseOf` ist **bereits konsumiert** in `evaluateGameVersion()`; verifiziere aber die tatsächlichen Mod-/Launcher-/Update-/Join-Consumers und `unverified_lab_only`-UI-Semantik. Harte Inkompatibilität bleibt inkompatibel, Pre1 muss in Q23 stable-only Pipeline `LAB_ONLY` bleiben. Keine VS-Pre1-Testinstallation oder Save-Migration ohne separates Lab-GO.
 5. **QA/Review:** npm Build + echte Semantik-/Join-/Vanilla-/Fake-Host-Tests ausführen; genau benannte Quell-Tests mit `node:test`/existenem Harness statt nur `source.includes()`-Stringchecks. Eine unabhängige QA-Session reproduziert Race/F1/F2 und bewertet Astra `REJECT` neu; erst danach ADR-006 zur Owner-Abnahme vorlegen.
 
