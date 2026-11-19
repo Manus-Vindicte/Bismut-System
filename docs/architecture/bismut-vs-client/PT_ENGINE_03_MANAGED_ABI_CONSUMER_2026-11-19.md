@@ -2,7 +2,7 @@
 
 - Datum: 2026-11-19
 - Owner: Bismut Engine Thread + unabhängige QA
-- Status: **HANDOFF / CODE_AUTHORIZATION_REQUIRED**, keine Implementierung durch dieses Dokument
+- Status: **HANDOFF / SCOPE_GO_FOR_EXISTING_ABI_CONSUMER / LIVE_AUTH_REQUIRED**, keine Implementierung durch dieses Dokument
 - Scope: vorhandene native C++-/DX12-Bridge, **Managed C# Consumer** in der tatsächlich zuständigen `mod-bismut-graphics`-Codebasis; kein Launcher-Code
 - Grundlage: Owner-Report `PT-BISMUT-RENDER-DISPATCH-01` mit nativer ABI PASS, Live BLOCKED; `ENGINE_VS123_FOLLOWUP_V1.md` laut Report Commit `79fac8b` (lokaler tatsächlicher Worktree/Branch vor Start verifizieren)
 - Git-Truth: Weder lokaler HEAD, Git-Push-Ziel, die >200 Dirty-Änderungen noch der vollständige Engine-Followup sind durch dieses Git-Dokument unabhängig geprüft.
@@ -17,7 +17,7 @@ Damit werden native Capability/Visibility und tatsächliche Frame-Beobachtung er
 
 ## Wie (max. 5)
 
-1. **Git & Sources:** lokale Engine-/Mod-Worktrees, Repo-/Branch-/Remote-Tip, AGENTS/Owner-Leases, bestehenden `PT-01`-Report und `ENGINE_HANDOFF_V1`, exakte Symbol-/Header-/C#-Signaturen, aktuell geladene DLL/Hash und alle fremden Dirty-Änderungen reconciliieren. Owner-Approval/Scope vor Änderungen bestätigen. VS123-Studie in voller Länge aus dem Client-Thread als versionierte Datei/Hash verlinken; bei fehlender Quelle diese Analyse als `SOURCE_BLOCKED` markieren.
+1. **Git & Sources:** lokale Engine-/Mod-Worktrees, Repo-/Branch-/Remote-Tip, AGENTS/Owner-Leases, bestehenden `PT-01`-Report und `ENGINE_HANDOFF_V1`, exakte Symbol-/Header-/C#-Signaturen, aktuell geladene DLL/Hash und alle fremden Dirty-Änderungen reconciliieren. Den mit „weiter gehts“ freigegebenen begrenzten Managed-Consumer-Scope bestätigen; nur bei neuer ABI-/Ownership-Erweiterung zusätzliche Owner-Freigabe einholen. VS123-Studie in voller Länge aus dem Client-Thread als versionierte Datei/Hash verlinken; bei fehlender Quelle diese Analyse als `SOURCE_BLOCKED` markieren.
 2. **Managed ABI:** per Export `TryGetExport`, kompatible Funktionszeiger, `StructLayout(LayoutKind.Sequential)` mit überprüfbaren 16/40 B, Methoden `GetDynamicMeshPassCaps`, `SetDynamicMeshPass`, `GetFrameIdObservation`; unbekannte ABI-Versionen und reservierte Passes fail-closed. Keine Exporte erfinden.
 3. **Legacy:** bei alter DLL/symbolweise fehlenden Exports `FEATURE_UNAVAILABLE`, **unveränderte OPAQUE+sichtbar-Darstellung**; kein harter Startabbruch, kein erzwungenes DX12, keine Transparent-/Shadow-Behauptung.
 4. **Frame Semantik:** `frameId=0` gilt als echtes erstes Frame. Nur erfolgreich präsentierte Frames beobachten. ADVANCE/DUPLICATE/REGRESSION anhand signierter nativer Observation-Counters behandeln; Pose-Refresh/Discard strikt aus den geklärten Ownership-/Frame-Gates, kein duplicate Upload oder versehentlicher Leak.
