@@ -1,10 +1,10 @@
 # Bismut VS Client · Architektur- und Q&A-Dokumente
 
-**Aktueller Git-Stand (2026-11-19):** [Roadmap V2.6](BISMUT_VS_CLIENT_ROADMAP_V2_6.md)
+**Aktueller Git-Stand (2026-11-19):** [Roadmap V2.7](BISMUT_VS_CLIENT_ROADMAP_V2_7.md)
 
 ## Entscheidungen und laufende Evaluierungen
 
-- **Q1–Q8:** Architekturentscheidungen RATIFIED (zusammengefasst in Roadmap V2.6).
+- **Q1–Q8:** Architekturentscheidungen RATIFIED (zusammengefasst in Roadmap V2.7).
 - **Q9:** vier Bootstrap-Lanes zur Evaluation freigegeben, Architektur OPEN.
 - **Q10:** vier Threading-Lanes zur Evaluation freigegeben, Architektur OPEN.
 - **Q11:** vier Memory-Ownership-Lanes zur Evaluation freigegeben (Rust Arenas D als Hypothese), Architektur OPEN.
@@ -22,7 +22,8 @@
 - **Q21:** [Option A: lokales Crash-Panel / Loganalyse / Lösung zuerst, optional „Fehlerbericht senden“ über Vercel, DECIDED](ADR_BISMUT_Q21_SIMPLE_SUPPORT_VERCEL_GATE_2026-11-19.md). Freiwillige Cloud-Diagnose ausschließlich über Vercel. Intern bevorzugt Gemini API Free Tier mit geprüfter Free-Alternative und regelbasiertem Fallback; keine ungeprüften Kosten oder ungeklärten Free-Tier-Datenschutzrisiken.
 - **Q22:** [E: signierte Komponenten, Delta-Updates, Portable-/Offline-Pakete, DECIDED](ADR_BISMUT_Q22_DISTRIBUTION_SIGNED_COMPONENTS_DELTA_OFFLINE_2026-11-19.md). Ein Installer/Updater und Recovery-Gate für Standard/Extended, keine Engine-Pflicht im Standard.
 - **Q23:** [Option A: genau ein öffentlicher Stable-Kanal, manuell bestätigte Updates, DECIDED](ADR_BISMUT_Q23_STABLE_ONLY_MANUAL_UPDATES_2026-11-19.md). Keine öffentliche Beta-/Nightly-Auswahl oder automatische Installationen; interne isolierte Lab-Builds bleiben zulässig.
-- **Q24:** First-Run, Import und sichere Einrichtung, OPEN.
+- **Q24:** [Option E: minimaler First-Run, Read-only Discovery, freiwilliger Import und sichere isolierte Migration, DECIDED](ADR_BISMUT_Q24_FIRST_RUN_DISCOVERY_SAFE_IMPORT_2026-11-19.md). Originalsaves, Mods, Instanzen und Auth-Daten nicht ungefragt verändern; Standard ohne Engine oder Cloud.
+- **Q25:** Spielen/Weiter, Welt-/Server-Schnellzugriff und Session-Lifecycle, OPEN.
 
 ## Reconciliation-Grenze
 
