@@ -72,17 +72,30 @@ Das Launcher-Dev-Repo `Manus-Vindicte/Bismut-Launcher-Dev` (geprüfter Ref `feat
 4. **Session lifecycle:** Start/Ready/Stop/Exit/Crash/Hang/Duplicate Launch, geordneter Save/Shutdown, kein Datenverlust, Return-to-Launcher/Watchdog beim Host-Absturz.
 5. **UX and privacy:** Crash-Panel offline mit identifiziert/vermutet/unbekannt; Fehlerbericht ausschließlich freiwillig hinter Vercel Gate, keine erzwungene KI-/Cloud-Anbindung. Öffentliche Releases ausschließlich Stable (Q23).
 
-## Verbindlicher Ausführungsplan
+## Verbindlicher Ausführungsplan und Engine-Live-Korrektur
 
-Umsetzung **nicht als weitere Q-Runde zerlegen**, sondern als **[Master Goal mit zwei Umsetzungsslices](MASTER_GOAL_BISMUT_ENGINE_CLIENT_TWO_SLICES_2026-11-19.md)**:
+Q25 ist eine **Client-/Session-Entscheidung** und ersetzt nicht den bereits live belegten DX12-Avatar-Pfad. Der zuletzt vom Owner gelieferte **lokale, bislang nicht gepushte Engine-Bericht** nennt:
 
-- **Team-Building-Pflicht vor Code:** unabhängige Engine-/Launcher-/Validation-Owner und Lead mit dokumentiertem Ownership-Handoff.
-- **Slice 1 Engine:** aktuelle DX12-Codebasis und Evidence inventarisieren, nur ein enges native Rust-DX12-Frame-/Present-/Lifecycle-Inkrement gegen die bestehenden Q-Gates bauen.
-- **Slice 2 Client:** bestehenden Launcher-Start-/Join-Flow an die qualifizierten Runtime-Capabilities/LaunchPlan-/RunRecord-Verträge anbinden; keine UI-Duplikate, kein ungeprüfter Engine-Provider.
+- Run 16: texturierter Avatar in Third Person auf DX12-Readback (`entityAtlasUploaded=true`; `entitySkinnedDraws=12408`).
+- Run 17: `BISMUT_ENTITY_ATLAS_SOLID=1` färbt Avatar vollständig magenta, SRV Slot 1 wird gelesen.
+- Run 19: AV-05 Pose-Palette **Δ120 Änderungen / 120 Frames**, 6 skinned Draws/Frame, Guard-Build `1EDB170B`. Runs 16–18 basierten auf stale DLL `CF4DD9C` ohne E-Guard. `dotnet build` aktualisiert das gepackte `bin\\Release\\net10.0\\BismutGraphics\\`-Verzeichnis nicht automatisch.
+- Commits lokal `17e127f`, `aa4efa3`, `6ccbf05`, Worktree `pt-bl-native-window-mod-20261117` clean laut Report; **kein Push**, deshalb erst lokal zu prüfen. `docs/PT-BISMUT-RENDER-DISPATCH-01_GAP_ANALYSIS.md` ist **RESEARCH_DONE / PENDING_DECISION**.
+- AV-01..AV-05: laut Report live weitgehend belegt; **Avatar/W3 insgesamt weiter PARTIAL**, Defekt E (Escape/Pause → Fenster schließen) nicht requalifiziert; AV-06/07 sichtbare Animation/Equipment/Transparenz manuell. Keine Input-Injection gegen Owner-Restriktion.
 
-Ergebnisstatus muss pro Slice und Gate als `PASS/PARTIAL/BLOCKED/NOT_ATTEMPTED` mit echten Test-Receipts berichtet werden; Dokumentation allein ist **kein** PASS.
+**Engine Slice nicht neu aufbauen:** Statt „Rust-DX12 Clear/Present von Null“ die vorhandene Dynamic-Mesh-/Avatar-/C++-DX12-Bridge weiterverwenden und eine **versionierte additive** `passMask/visibility + FrameId`-Erweiterung **erst nach eigenem ADR + expliziter Owner-Freigabe** implementieren. Transparent-/Shadow-/GUI-/Effects-/Resource-/Instancing-Gaps bleiben separat klassifiziert. Rust Native DX12 bleibt über Q5/Q6 die Zielarchitektur, nicht ein durch Q25 schon implementierter Ersatz.
+
+**Master Goal mit Team-Building-Hard-Gate und genau zwei Implementation Slices:**
+
+1. **Slice 1 ENGINE:** bestehende DX12-Bridge / Render Dispatch minimal erweitern, Avatar-/Pose-/Atlas-Evidence behalten, E/AV-06/07 nicht fälschlich als PASS.
+2. **Slice 2 CLIENT:** vorhandenen Bismut Launcher und RuntimeSupervisor für World-/Server-Intent, `LaunchPlan`, `RunRecord`, qualifizierten Backend-Start, Session-Exit/Recovery anbinden. Keine doppelte Launcher-UI.
+
+**Team-Building-Pflicht** mit realen Agenten-IDs und unabhängiger QA vor Code; sonst `BLOCKED_TEAM_NOT_AVAILABLE`. `LAUNCHER_READY_TO_CONNECT` bleibt vor produktiver Engine-Provider-Kopplung zu qualifizieren. Der Auftrag selbst führt keinen lokalen Code/Test aus und behauptet keinen Live-PASS.
+
+[Master Goal · Zwei Slices + Team-Building](MASTER_GOAL_BISMUT_ENGINE_CLIENT_TWO_SLICES_2026-11-19.md)
 
 ## Referenzen
+
+- [Master Goal Engine + Client](MASTER_GOAL_BISMUT_ENGINE_CLIENT_TWO_SLICES_2026-11-19.md)
 
 - [Roadmap V2.8](BISMUT_VS_CLIENT_ROADMAP_V2_8.md)
 - [Master Goal: Engine + Client, zwei Slices](MASTER_GOAL_BISMUT_ENGINE_CLIENT_TWO_SLICES_2026-11-19.md)
