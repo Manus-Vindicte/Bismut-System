@@ -26,6 +26,10 @@
 - **Q25:** [Option E: bestehender Launcher bleibt Start-/Server-/World-UI, DECIDED](ADR_BISMUT_Q25_EXISTING_LAUNCHER_CLIENT_SESSION_2026-11-19.md). Preflight/LaunchPlan/RunRecord/Session-Lifecycle und Return-to-Launcher ergänzen, kein zweiter World-/Server-Browser.
 - **MASTER GOAL:** [Team-Building HARD GATE, genau zwei Slices Engine + Client](MASTER_GOAL_BISMUT_ENGINE_CLIENT_TWO_SLICES_2026-11-19.md). Owner-reported DX12 Avatar Runs 16/17/19 sind lokale Ausgangsbasis, nicht neu verifiziert. Bestehende Dynamic-Mesh-Bridge verwenden, passMask/visibility + FrameId erst nach eigenem ADR und Owner Approval; Defekt E/AV-06/07 bleiben manuell OPEN. Status READY_FOR_LOCAL_AGENT_HANDOFF, keine lokale Code-Umsetzung.
 
+## Laufende Impact-Studien
+
+- **VS 1.23.0-pre.1:** [PT-VS-1.23-PRE1-ENGINE-CLIENT-IMPACT-STUDY, PRELIMINARY / SOURCE_PENDING](PT_VS_1_23_0_PRE1_ENGINE_CLIENT_IMPACT_STUDY_2026-11-19.md). Zwei getrennte Engine-/Client-Study-Threads, Pre-Release nur isoliert im Lab, keine Stable-/World-/Mod-Migration. Die exakte offizielle Pre.1-Release-Seite war bei Erstellung nicht abrufbar; sie ist vor abschließender Quellenauswertung zwingend zu lesen.
+
 ## Reconciliation-Grenze
 
 Dieser Git-Pfad enthält versionierte **Entscheidungen und einen kompakten Umsetzungsstand**. Er ist nicht automatisch ein Ersatz für bestehende lokale Engine-/Launcher-/Mod-Handoff-Docs und Runtime-Evidence. Vor Übernahme in den Windows-Checkout die tatsächlichen HEADs, Dirty States, Kanon-Indizes und qualifizierten Gates prüfen. Keine Tests werden durch das Anlegen dieser Dokumente zu PASS.
