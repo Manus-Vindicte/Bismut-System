@@ -27,7 +27,7 @@
 | 16 | B + D: Rust Recovery Supervisor + externer Watchdog | In-process Recovery State Machine für kontrollierbare Fehler; externer Helper für Crash-/Hang-Evidence, Launcher-Handoff und sichere Folgestarts; [ADR Q16](ADR_BISMUT_Q16_RUST_RECOVERY_SUPERVISOR_EXTERNAL_WATCHDOG_2026-11-18.md) |
 | 17 | B + Benchmark Worlds: Stage-Frame-Time-Budgets, p50/p95/p99 und reproduzierbare geskriptete Testwelten | Feste Route/Fixture/Mod-/Grafikprofile, Warm-up, Capture, compare vs Vanilla nur bei Parität; [ADR Q17](ADR_BISMUT_Q17_FRAME_BUDGETS_BENCHMARK_WORLDS_2026-11-19.md) |
 | 18 | D+ Unified Launcher/Client Shell mit Backend-Picker, Q17 Benchmark Worlds und optionalem NVIDIA Assist | Eine Rust-native Shell mit Home/Game/Control-Center; Installation als Launcher-Service, VS-.NET in-process nur auf Bismut-DX12-Pfad; [ADR Q18](ADR_BISMUT_Q18_UNIFIED_LAUNCHER_CLIENT_BACKEND_BENCH_NVIDIA_2026-11-19.md) |
-| 18A | **Bismut VS Client - Standard** + **BismutX VS Client - Extended** | Ein Installer, Standard ohne Engine als Default, Extended als optionale versionierte Runtime-/GPU-/SDK-Capabilities; [ADR Q18A](ADR_BISMUT_Q18A_PRODUCT_EDITIONS_INSTALLER_2026-11-19.md) |
+| 18A | **Öffentlich: Bismut Client / Bismut Client Extended**; intern: Bismut VS Client - Standard / BismutX VS Client - Extended | Ein Installer, Standard ohne Engine als Default, Extended optional; **Titelleiste immer Bismut Client**. [ADR Q18A](ADR_BISMUT_Q18A_PRODUCT_EDITIONS_INSTALLER_2026-11-19.md) |
 | 19 | E: Manual/Custom + capability-aware Presets + Q17 Benchmark Auto-Tuner + opt-in NVIDIA Assist | Quality/Balanced/Performance/Custom mit desired/effective/supported, Nutzervorschau, A/B-Messung, Rollback und Backend-Gates; [ADR Q19](ADR_BISMUT_Q19_GRAPHICS_PRESETS_AUTOTUNER_NVIDIA_ASSIST_2026-11-19.md) |
 | 20 | OPEN: Mods und Modpack-Funktionen | Mod Hub, Versionierung, Resolver, Lockfiles, BCIL-Analyse, Publishing und Profile festlegen |
 
@@ -161,10 +161,12 @@
 
 ## J. Q18A DECIDED | Standard und Extended Produkteditionen
 
-**Owner-Namen sind festgelegt:**
+**Öffentliche Anzeigenamen und interne Produktkennungen sind getrennt:**
 
-- **Bismut VS Client - Standard**: Standardinstallation und normaler Vanilla-/Modded-Launcher für Vintage Story, **keine Bismut Engine als zwingende Abhängigkeit**. Bestehende Launcher-Funktionen zu ModDB, Modpacks, Instanzen, Welten, Updates, Recovery bleiben in Standard und dürfen nicht hinter BismutX verschwinden.
-- **BismutX VS Client - Extended**: Option beim selben Installer mit Standard **plus** versionierten BismutX-Komponenten für Rust Native DX12, Q15 Bismut Loader/SDK, Q17 Benchmark Worlds und Q19 Advanced Graphics/NVIDIA Assist, jeweils erst nach tatsächlicher Capability-/Version-/Live-Qualifikation.
+- **Bismut Client** (*interne Kennung: Bismut VS Client - Standard*): Standardinstallation und normaler Vanilla-/Modded-Launcher für Vintage Story, **keine Bismut Engine als zwingende Abhängigkeit**. Bestehende Launcher-Funktionen zu ModDB, Modpacks, Instanzen, Welten, Updates, Recovery bleiben in Standard und dürfen nicht hinter BismutX verschwinden.
+- **Bismut Client Extended** (*interne Kennung: BismutX VS Client - Extended*): Option beim selben Installer mit Standard **plus** versionierten BismutX-Komponenten für Rust Native DX12, Q15 Bismut Loader/SDK, Q17 Benchmark Worlds und Q19 Advanced Graphics/NVIDIA Assist, jeweils erst nach tatsächlicher Capability-/Version-/Live-Qualifikation.
+
+**UI-Branding:** In beiden Editionen lautet die Titelleiste immer **Bismut Client**. Öffentliche Menü-/Taskbar-/Shortcut-Branding-Texte verwenden **Bismut Client**, der Installer zeigt als Wahl **Bismut Client** und **Bismut Client Extended**. In der Oberfläche kann die konkrete Edition als Status/Label unter Über/Komponenten, Installation und Extended-Funktionen erscheinen. **BismutX** bleibt auf technische Paket-/Repository-/Capability-Namen beschränkt; es ist kein öffentlicher Produktname. Der Benutzer erkennt den funktionalen Unterschied anhand der bereitgestellten Module und Optionen, nicht durch eine zweite Marke.
 
 **Installer:** Default Standard, Extended als bewusst auszuwählendes Add-on; lokal/offline entpackbare oder verifizierte herunterladbare Komponenten, transparente Version-/Disk-Space-/Dependency-/Fallback-Anzeige. Standard → Extended und Extended → Standard sind transaktionale Upgrade-/Downgrade-Wege mit Snapshots und Rollback. Beim Entfernen von Extended keine Spielstände, Mods oder Standard-Profile löschen. Game-/DX12-Feature-Gates bleiben unverändert; ein installiertes Paket ist kein Rendering-PASS.
 
