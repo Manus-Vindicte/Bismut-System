@@ -1,10 +1,10 @@
 # Bismut VS Client · Architektur- und Q&A-Dokumente
 
-**Aktueller Git-Stand (2026-11-19):** [Roadmap V2.7](BISMUT_VS_CLIENT_ROADMAP_V2_7.md)
+**Aktueller Git-Stand (2026-11-19):** [Roadmap V2.8](BISMUT_VS_CLIENT_ROADMAP_V2_8.md)
 
 ## Entscheidungen und laufende Evaluierungen
 
-- **Q1–Q8:** Architekturentscheidungen RATIFIED (zusammengefasst in Roadmap V2.7).
+- **Q1–Q8:** Architekturentscheidungen RATIFIED (zusammengefasst in Roadmap V2.8).
 - **Q9:** vier Bootstrap-Lanes zur Evaluation freigegeben, Architektur OPEN.
 - **Q10:** vier Threading-Lanes zur Evaluation freigegeben, Architektur OPEN.
 - **Q11:** vier Memory-Ownership-Lanes zur Evaluation freigegeben (Rust Arenas D als Hypothese), Architektur OPEN.
@@ -23,7 +23,8 @@
 - **Q22:** [E: signierte Komponenten, Delta-Updates, Portable-/Offline-Pakete, DECIDED](ADR_BISMUT_Q22_DISTRIBUTION_SIGNED_COMPONENTS_DELTA_OFFLINE_2026-11-19.md). Ein Installer/Updater und Recovery-Gate für Standard/Extended, keine Engine-Pflicht im Standard.
 - **Q23:** [Option A: genau ein öffentlicher Stable-Kanal, manuell bestätigte Updates, DECIDED](ADR_BISMUT_Q23_STABLE_ONLY_MANUAL_UPDATES_2026-11-19.md). Keine öffentliche Beta-/Nightly-Auswahl oder automatische Installationen; interne isolierte Lab-Builds bleiben zulässig.
 - **Q24:** [Option E: minimaler First-Run, Read-only Discovery, freiwilliger Import und sichere isolierte Migration, DECIDED](ADR_BISMUT_Q24_FIRST_RUN_DISCOVERY_SAFE_IMPORT_2026-11-19.md). Originalsaves, Mods, Instanzen und Auth-Daten nicht ungefragt verändern; Standard ohne Engine oder Cloud.
-- **Q25:** Spielen/Weiter, Welt-/Server-Schnellzugriff und Session-Lifecycle, OPEN.
+- **Q25:** [Option E: bestehender Launcher bleibt Start-/Server-/World-UI, DECIDED](ADR_BISMUT_Q25_EXISTING_LAUNCHER_CLIENT_SESSION_2026-11-19.md). Preflight/LaunchPlan/RunRecord/Session-Lifecycle und Return-to-Launcher ergänzen, kein zweiter World-/Server-Browser.
+- **MASTER GOAL:** [Team-Building HARD GATE, genau zwei Slices Engine + Client](MASTER_GOAL_BISMUT_ENGINE_CLIENT_TWO_SLICES_2026-11-19.md). Owner-reported DX12 Avatar Runs 16/17/19 sind lokale Ausgangsbasis, nicht neu verifiziert. Bestehende Dynamic-Mesh-Bridge verwenden, passMask/visibility + FrameId erst nach eigenem ADR und Owner Approval; Defekt E/AV-06/07 bleiben manuell OPEN. Status READY_FOR_LOCAL_AGENT_HANDOFF, keine lokale Code-Umsetzung.
 
 ## Reconciliation-Grenze
 
