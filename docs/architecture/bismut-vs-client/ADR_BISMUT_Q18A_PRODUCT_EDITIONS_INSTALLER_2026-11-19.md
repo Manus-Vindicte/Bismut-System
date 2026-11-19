@@ -1,21 +1,25 @@
 # ADR BISMUT Q18A | Produkteditionen und Installer
 
 - Datum: 2026-11-19
-- Owner-Beschluss: **Zwei bestätigte Produktnamen**
-  - **Bismut VS Client - Standard**
-  - **BismutX VS Client - Extended**
+- Owner-Beschluss: **Einheitlicher öffentlicher Markenname mit interner Editionierung**
+  - **Öffentlich:** Bismut Client (Standardinstallation)
+  - **Öffentlich:** Bismut Client Extended (optionale erweiterte Installation)
+  - **Interne technische Bezeichnungen:** Bismut VS Client - Standard / BismutX VS Client - Extended
+  - **Titelleiste in beiden Editionen:** Bismut Client
 - Status: **PRODUCT_DECIDED / INSTALLER_NOT_IMPLEMENTED**
 - Bezug: Q18 (Unified Launcher-/Client-Shell); Q20 Mod-Hub-/Modpack-Details bleiben OPEN
 - Grundlage: Launcher-Dev als unabhängiges Vanilla-fähiges Produkt und Q18 Unified Shell. Das Dokument ist eine **additive Editionierungsentscheidung**, kein Ersatz für die Launcher-ADR-001-Integration-Gates.
 
 ## Produktvertrag
 
-**Ein Installer, ein gemeinsamer Launcher-/Client-Kern, zwei Ausbaustufen**. Editionen sind Installations-/Capability-Profile, **keine zwei konkurrierenden Programme oder Datenbanken**. Die Edition heißt in der Benutzeroberfläche exakt:
+**Ein Installer, ein gemeinsamer Launcher-/Client-Kern, zwei Ausbaustufen**. Editionen sind Installations-/Capability-Profile, **keine zwei konkurrierenden Programme oder Datenbanken**. Nach außen werden ausschließlich folgende Namen angezeigt, mit der gemeinsamen Titelleiste **Bismut Client**:
 
 | Produktname | Installationswahl | Enthalten |
 |---|---|---|
-| **Bismut VS Client - Standard** | **Default** | Eigenständig nutzbarer Vintage-Story-Launcher mit Vanilla-Launch, Versionen/Instanzen, Welten, Mods/Modpacks, Profilen, Updates, Backups/Recovery und den jeweils tatsächlich qualifizierten Standard-Settings |
-| **BismutX VS Client - Extended** | **Optional erweiterte Installation** | Alles aus Standard **plus** optionale BismutX-Runtime-Pakete: Bismut Native DX12 (nach qualifiziertem Live-Gate), Q15 Bismut Loader/Native SDK, Q17 Benchmark Worlds, Q19 Advanced Graphics/Auto-Tuner/NVIDIA Assist und später qualifizierte Extended-Features |
+| **Bismut Client** | **Default / Standard** | Eigenständig nutzbarer Vintage-Story-Launcher mit Vanilla-Launch, Versionen/Instanzen, Welten, Mods/Modpacks, Profilen, Updates, Backups/Recovery und den jeweils tatsächlich qualifizierten Standard-Settings |
+| **Bismut Client Extended** | **Optional erweiterte Installation** | Alles aus Standard **plus** optionale BismutX-Runtime-Pakete: Bismut Native DX12 (nach qualifiziertem Live-Gate), Q15 Bismut Loader/Native SDK, Q17 Benchmark Worlds, Q19 Advanced Graphics/Auto-Tuner/NVIDIA Assist und später qualifizierte Extended-Features |
+
+**UI-Regel:** Titelleiste, Taskbar-/Shortcut-Name und Haupt-Branding bleiben unabhängig von der Edition **Bismut Client**. Die Edition wird nur dort angezeigt, wo sie inhaltlich nützt: Installer-Auswahl, Funktionsübersicht, Einstellungen → Über/Komponenten sowie bei Extended-only-Funktionen und deren Verfügbarkeit. Kein öffentliches „BismutX“-Branding. Interne Paket-/Provider-IDs dürfen weiterhin das Präfix bismutx tragen, sind aber keine Produktnamen.
 
 **Keine künstlichen Standard-Limits:** Features aus dem bisherigen unabhängigen Bismut Launcher werden nicht rückwirkend exklusiv für X gemacht. Extended bedeutet zusätzliche native Runtime-/Graphics-/Developer-Capabilities, nicht ein kostenpflichtiges Abo oder separate Login-/Profildatenbank. **Keine Lizenz-/Preis-/Monetarisierungsentscheidung** getroffen.
 
@@ -25,8 +29,8 @@ Der Installer erklärt die Wahl in Alltagssprache:
 
 **„Wie möchtest du Bismut installieren?“**
 
-1. **Standard (empfohlen)**: „Bismut VS Client - Standard. Verwaltet und startet Vintage Story. Keine zusätzliche Bismut-Engine nötig.“
-2. **Extended (optional)**: „BismutX VS Client - Extended. Enthält Standard und installiert zusätzlich die kompatiblen BismutX-Erweiterungen, beispielsweise den experimentellen DX12-Client, Benchmark-Suite und erweiterte Grafikfunktionen, soweit für die gewählte Version freigegeben.“
+1. **Bismut Client (empfohlen)**: „Verwaltet und startet Vintage Story. Keine zusätzliche Bismut-Engine erforderlich.“
+2. **Bismut Client Extended (optional)**: „Enthält alle Standardfunktionen und ergänzt bei unterstützter Version den erweiterten Client mit DX12-Backend, Benchmark-Welten und erweiterten Grafikeinstellungen.“
 
 Der Installer kann aus demselben signierten Paket-/Channel-System **lokale/offline Pakete entpacken** oder **versioniert herunterladen, verifizieren, atomar installieren**. Eine Onlineverbindung ist nicht zwingend für vorhandene Offline-Pakete und den bereits installierten Standard-Launcher. Größe, Runtime-/Game-Version, Installationsort, fehlende Komponenten und Neustart-Hinweise vor Bestätigung sichtbar machen. Kein automatischer Engine-Download im Standard-Modus.
 
@@ -59,7 +63,7 @@ Der Installer kann aus demselben signierten Paket-/Channel-System **lokale/offli
 
 ## Nicht beschlossen / Status
 
-Nicht entschieden: Preis/Lizenz, Markenrechtslage, eigentliche technische Installer-Implementierung, finaler UI-Flow, Release-Zeitpunkt, DX12-Mod-Kompatibilitäts-PASS. **Q20 bleibt explizit offen**, auch wenn Standard bereits vorhandene Modpack-/ModDB-Funktionen behält. Kein automatisches Umetikettieren alter Launcher-Versionen zu „Rust Native“ und keine ungeprüften Package-/Renderer-Rewrites.
+Nicht entschieden: Preis/Lizenz, Markenrechtslage, eigentliche technische Installer-Implementierung, finale UI-Gestaltung, Release-Zeitpunkt, DX12-Mod-Kompatibilitäts-PASS. **Die sichtbaren Editionsnamen und die einheitliche Titelleiste sind dagegen beschlossen.** **Q20 bleibt explizit offen**, auch wenn Standard bereits vorhandene Modpack-/ModDB-Funktionen behält. Kein automatisches Umetikettieren alter Launcher-Versionen zu „Rust Native“ und keine ungeprüften Package-/Renderer-Rewrites.
 
 ## Referenzen
 
