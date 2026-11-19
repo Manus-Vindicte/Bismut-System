@@ -1,10 +1,10 @@
 # Bismut VS Client · Architektur- und Q&A-Dokumente
 
-**Aktueller Git-Stand (2026-11-19):** [Roadmap V2.3](BISMUT_VS_CLIENT_ROADMAP_V2_3.md)
+**Aktueller Git-Stand (2026-11-19):** [Roadmap V2.4](BISMUT_VS_CLIENT_ROADMAP_V2_4.md)
 
 ## Entscheidungen und laufende Evaluierungen
 
-- **Q1–Q8:** Architekturentscheidungen RATIFIED (zusammengefasst in Roadmap V2.3).
+- **Q1–Q8:** Architekturentscheidungen RATIFIED (zusammengefasst in Roadmap V2.4).
 - **Q9:** vier Bootstrap-Lanes zur Evaluation freigegeben, Architektur OPEN.
 - **Q10:** vier Threading-Lanes zur Evaluation freigegeben, Architektur OPEN.
 - **Q11:** vier Memory-Ownership-Lanes zur Evaluation freigegeben (Rust Arenas D als Hypothese), Architektur OPEN.
@@ -19,7 +19,8 @@
 - **Q18A:** [Öffentliche Editionen: Bismut Client / Bismut Client Extended, DECIDED](ADR_BISMUT_Q18A_PRODUCT_EDITIONS_INSTALLER_2026-11-19.md). **Titelleiste immer Bismut Client**; intern bleiben Bismut VS Client - Standard / BismutX VS Client - Extended die technischen Kennungen. Standard ohne Engine als Default, Extended optionale versionierte Komponenten, gemeinsamer Launcher-/Client-Kern.
 - **Q19:** [Graphics Presets, Benchmark Auto-Tuner und NVIDIA Assist, E DECIDED](ADR_BISMUT_Q19_GRAPHICS_PRESETS_AUTOTUNER_NVIDIA_ASSIST_2026-11-19.md); numeric Performance-Budgets weiterhin NEEDS_BASELINE.
 - **Q20:** [E: Unified Mod Hub, reproduzierbare Modpack-Lockfiles und BCIL, DECIDED](ADR_BISMUT_Q20_UNIFIED_MOD_HUB_LOCKFILES_BCIL_EDITIONS_2026-11-19.md). **Bismut Client Standard:** ModDB/Modpacks/Profiles/Resolver/Lockfiles/Rollback; **Extended:** Bismut Loader, DX12-Mod-Adapter und BCIL-/REA-Kompatibilitätsanalyse.
-- **Q21:** Developer Tools und Diagnosefunktionen, OPEN.
+- **Q21:** [Option A + Vercel-gated „Fehlerbericht senden“, DECIDED](ADR_BISMUT_Q21_SIMPLE_SUPPORT_VERCEL_GATE_2026-11-19.md). Sichtbar nur lokale Hilfe, Send-Button und verständliche Lösung; alle Cloud-Diagnosewege über Vercel, parallele interne Dev-/LLM-Auswertung und keine Architekturflut in der UI.
+- **Q22:** Distribution, Updates und optionale Komponenten, OPEN.
 
 ## Reconciliation-Grenze
 
