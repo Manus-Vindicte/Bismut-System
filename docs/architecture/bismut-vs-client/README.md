@@ -30,6 +30,11 @@
 
 - **VS 1.23.0-pre.1:** [ursprünglicher Studienauftrag](PT_VS_1_23_0_PRE1_ENGINE_CLIENT_IMPACT_STUDY_2026-11-19.md), bei dessen Erstellung `SOURCE_PENDING` war. Nach neuem lokalen Owner-/Agenten-Report **STUDY RESEARCH_DONE / IMPACT PARTIAL / TEST_PASS BLOCKED**, Originalrelease und API Changes laut Report vollständig gelesen und QA akzeptiert (lokaler Report-Commit `c12c0df3`, **nicht hier verfügbar**). **[Folgeauftrag / fünf OD-Proposals / getrennte Engine- und Client-Threads](PT_BISMUT_VS123_POST_STUDY_OWNER_GATES_AND_TWO_THREADS_2026-11-19.md)**. Entscheidungen **nicht ratifiziert**, keine öffentliche Pre1-Migration.
 
+## Nächste Implementierungsaufträge (2026-11-19)
+
+- **[PT-ENGINE-03 · Managed ABI Consumer](PT_ENGINE_03_MANAGED_ABI_CONSUMER_2026-11-19.md)**: vorhandene native 16/40-Byte-Exports in C# verdrahten, Legacy-/Frame-Safety und echte Native-/Managed-Testmatrix; Live-Run separat autorisieren.
+- **[PT-CLIENT-04 · D6 Race-Reaudit + VS123-Version-Consumer](PT_CLIENT_04_REPLAY_RACE_ADR006_REAUDIT_2026-11-19.md)**: PT-CLIENT-03-Code bereits auf `feat/modpack-scope-binding` vorhanden; keine doppelte Implementierung. Dynamische Fake-Host-Tests, stale Pending-Race absichern, End-to-End Pre-Release-Gates und unabhängiges Astra-F1/F2-Reaudit. ADR-006 bleibt bis Owner-Approval PROPOSED.
+
 ## Reconciliation-Grenze
 
 Dieser Git-Pfad enthält versionierte **Entscheidungen und einen kompakten Umsetzungsstand**. Er ist nicht automatisch ein Ersatz für bestehende lokale Engine-/Launcher-/Mod-Handoff-Docs und Runtime-Evidence. Vor Übernahme in den Windows-Checkout die tatsächlichen HEADs, Dirty States, Kanon-Indizes und qualifizierten Gates prüfen. Keine Tests werden durch das Anlegen dieser Dokumente zu PASS.
