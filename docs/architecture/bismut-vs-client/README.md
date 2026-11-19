@@ -1,10 +1,10 @@
 # Bismut VS Client · Architektur- und Q&A-Dokumente
 
-**Aktueller Git-Stand (2026-11-19):** [Roadmap V2.2](BISMUT_VS_CLIENT_ROADMAP_V2_2.md)
+**Aktueller Git-Stand (2026-11-19):** [Roadmap V2.3](BISMUT_VS_CLIENT_ROADMAP_V2_3.md)
 
 ## Entscheidungen und laufende Evaluierungen
 
-- **Q1–Q8:** Architekturentscheidungen RATIFIED (zusammengefasst in Roadmap V2.2).
+- **Q1–Q8:** Architekturentscheidungen RATIFIED (zusammengefasst in Roadmap V2.3).
 - **Q9:** vier Bootstrap-Lanes zur Evaluation freigegeben, Architektur OPEN.
 - **Q10:** vier Threading-Lanes zur Evaluation freigegeben, Architektur OPEN.
 - **Q11:** vier Memory-Ownership-Lanes zur Evaluation freigegeben (Rust Arenas D als Hypothese), Architektur OPEN.
@@ -18,7 +18,8 @@
 - **Q18:** [D+ Unified Launcher/Client Shell, Backend-Auswahl, Benchmark und NVIDIA Assist, DECIDED](ADR_BISMUT_Q18_UNIFIED_LAUNCHER_CLIENT_BACKEND_BENCH_NVIDIA_2026-11-19.md). Vorhandene Launcher-Dienste integriert statt doppelt implementiert.
 - **Q18A:** [Öffentliche Editionen: Bismut Client / Bismut Client Extended, DECIDED](ADR_BISMUT_Q18A_PRODUCT_EDITIONS_INSTALLER_2026-11-19.md). **Titelleiste immer Bismut Client**; intern bleiben Bismut VS Client - Standard / BismutX VS Client - Extended die technischen Kennungen. Standard ohne Engine als Default, Extended optionale versionierte Komponenten, gemeinsamer Launcher-/Client-Kern.
 - **Q19:** [Graphics Presets, Benchmark Auto-Tuner und NVIDIA Assist, E DECIDED](ADR_BISMUT_Q19_GRAPHICS_PRESETS_AUTOTUNER_NVIDIA_ASSIST_2026-11-19.md); numeric Performance-Budgets weiterhin NEEDS_BASELINE.
-- **Q20:** Mod Hub, Modpacks, Lockfiles und BCIL-Kompatibilitätsprüfung, OPEN.
+- **Q20:** [E: Unified Mod Hub, reproduzierbare Modpack-Lockfiles und BCIL, DECIDED](ADR_BISMUT_Q20_UNIFIED_MOD_HUB_LOCKFILES_BCIL_EDITIONS_2026-11-19.md). **Bismut Client Standard:** ModDB/Modpacks/Profiles/Resolver/Lockfiles/Rollback; **Extended:** Bismut Loader, DX12-Mod-Adapter und BCIL-/REA-Kompatibilitätsanalyse.
+- **Q21:** Developer Tools und Diagnosefunktionen, OPEN.
 
 ## Reconciliation-Grenze
 
